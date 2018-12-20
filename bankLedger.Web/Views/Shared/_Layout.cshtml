@@ -1,10 +1,15 @@
-﻿<!DOCTYPE html>
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>@ViewBag.Title</title>
-        <meta charset="utf-8" />
-    </head>
-    <body>
-        @RenderBody()
-    </body>
+<head>
+    <title>Bank Ledger</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    @Styles.Render("~/bundles/styles")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/main")
+</head>
+<body>
+    @RenderBody()
+</body>
 </html>
