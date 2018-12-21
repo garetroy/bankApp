@@ -109,6 +109,7 @@
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="App_Start\TypeConfig.cs" />
     <Compile Include="App_Start\StructureMapResolver.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />

@@ -7,10 +7,9 @@ using bankLedger.Web.App_Start;
 
 namespace bankLedger.Web.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
-        //TODO: Need to set base controller.
-        public AccountController(StructureMapResolver resolver)
+        public AccountController(StructureMapResolver resolver) : base(resolver)
         {
             m_resolver = resolver;
         }

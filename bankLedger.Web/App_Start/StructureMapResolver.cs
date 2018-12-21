@@ -6,7 +6,7 @@ using StructureMap;
 
 namespace bankLedger.Web.App_Start
 {
-    public sealed class StructureMapResolver : IDependencyResolver
+    virtual sealed class StructureMapResolver : IDependencyResolver
     {
         public StructureMapResolver(IContainer container)
         {
