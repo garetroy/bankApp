@@ -39,7 +39,8 @@ namespace bankLedger.Data.Services
             return hashValue == expectedString;
         }
 
-        private byte[] GetPbkdf2Bytes(string password, byte[] salt, int iterations, int outputBytes)
+        private byte[] GetPbkdf2Bytes(string password, byte[] salt, 
+            int iterations, int outputBytes)
         {
             var pbkdf2 = new Rfc2898DeriveBytes(password, salt)
             {
