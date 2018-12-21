@@ -100,7 +100,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="Models\LedgerViewModel.cs" />
@@ -109,6 +108,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="App_Start\TypeConfig.cs" />
+    <Compile Include="App_Start\StructureMapResolver.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />

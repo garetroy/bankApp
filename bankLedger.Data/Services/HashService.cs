@@ -7,7 +7,6 @@ namespace bankLedger.Data.Services
 {
     internal class HashService : IHashService
     {
-
         public Tuple<string, string> ComputeHash(string plainText)
         {
             var random = new Random();

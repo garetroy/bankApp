@@ -4,6 +4,7 @@ using System.Web.Routing;
 using System.Web.Http;
 using bankLedger.Web.App_Start;
 using System.Web.Optimization;
+using StructureMap;
 
 namespace bankLedger.Web
 {
@@ -11,8 +12,10 @@ namespace bankLedger.Web
     {
         protected void Application_Start()
         {
+            IContainer container = TypeConfig.RegisterTypes();
+            DependencyResolver.SetResolver(new StructureMapResolver(container));
+
             AreaRegistration.RegisterAllAreas();
-            GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }

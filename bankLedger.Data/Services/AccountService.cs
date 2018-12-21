@@ -4,6 +4,11 @@ namespace bankLedger.Data.Services
 {
     public sealed class AccountService : IAccountService
     {
+        public AccountService(IBankLedgerService service)
+        {
+            BankLedgerService = service;
+        }
+
         public bool CreateAccount(Account account)
         {
             return false;
@@ -18,5 +23,7 @@ namespace bankLedger.Data.Services
         {
             return false;
         }
+
+        public IBankLedgerService BankLedgerService { get; }
     }
 }

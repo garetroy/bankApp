@@ -6,6 +6,11 @@ namespace bankLedger.Data.Services
 {
     public sealed class LedgerService : ILedgerService
     {
+        public LedgerService(IBankLedgerService service)
+        {
+            BankLedgerService = service;
+        }
+
         public ICollection<Ledger> GetAllLedgers(Account account)
         {
             return null;
@@ -20,5 +25,7 @@ namespace bankLedger.Data.Services
         {
             return 0;
         }
+
+        public IBankLedgerService BankLedgerService { get; }
     }
 }
