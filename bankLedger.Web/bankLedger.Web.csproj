@@ -81,6 +81,12 @@
     <Reference Include="WebGrease">
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
     </Reference>
+    <Reference Include="StructureMap">
+      <HintPath>..\packages\StructureMap.4.7.0\lib\net45\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap.Web">
+      <HintPath>..\packages\structuremap.web.4.0.0.315\lib\net40\StructureMap.Web.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />
@@ -102,6 +108,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="App_Start\TypeConfig.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />
@@ -120,6 +127,16 @@
     <Content Include="Views\Account\AccountInfo.cshtml" />
     <Content Include="Views\Account\AccountLedger.cshtml" />
     <Content Include="Views\Account\_ledger.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\bankLedger.Model\bankLedger.Models.csproj">
+      <Project>{90E21F5F-5057-4977-91B2-3ED6DD385B97}</Project>
+      <Name>bankLedger.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\bankLedger.Data\bankLedger.Data.csproj">
+      <Project>{E717C80D-4ED5-4E74-91A5-D1324B715F50}</Project>
+      <Name>bankLedger.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
