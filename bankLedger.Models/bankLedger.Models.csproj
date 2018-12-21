@@ -10,5 +10,7 @@
   <ItemGroup>
     <Folder Include="Attributes\" />
     <Folder Include="Enumerators\" />
+    <Folder Include="Account\" />
+    <Folder Include="Ledger\" />
   </ItemGroup>
 </Project>
