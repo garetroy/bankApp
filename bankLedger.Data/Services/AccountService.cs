@@ -4,9 +4,19 @@ namespace bankLedger.Data.Services
 {
     public sealed class AccountService : IAccountService
     {
-        public AccountService()
+        public bool CreateAccount(Account account)
         {
-            DateTime dt = DateTime.Now;
+            return false;
+        }
+
+        public Account SignIn(string username, string encryptedPassword)
+        {
+            return null;
+        }
+
+        public bool SignOut(Account account)
+        {
+            return false;
         }
     }
 }

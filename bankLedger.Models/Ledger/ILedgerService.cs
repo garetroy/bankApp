@@ -7,6 +7,6 @@ namespace bankLedger.Models
     {
         ICollection<Ledger> GetAllLedgers(Account account);
         bool CreateLedger(Account account, Ledger ledger);
-        int GetTotalBalance(Account account);
+        decimal GetTotalBalance(Account account);
     }
 }
