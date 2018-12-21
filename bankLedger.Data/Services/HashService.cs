@@ -33,7 +33,8 @@ namespace bankLedger.Data.Services
                 return false;
 
             var saltBytes = Convert.FromBase64String(salt);
-            var expectedString = Convert.ToBase64String(GetPbkdf2Bytes(plainText, saltBytes, c_iterations, c_hashSizeInBytes));
+            var expectedString = Convert.ToBase64String(GetPbkdf2Bytes(plainText,
+                saltBytes, c_iterations, c_hashSizeInBytes));
 
             return hashValue == expectedString;
         }
