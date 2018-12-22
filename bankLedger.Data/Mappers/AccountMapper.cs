@@ -6,7 +6,7 @@ namespace bankLedger.Data.Mappers
 {
     internal sealed class AccountMapper
     {
-        public Account Map(DbAccount account)
+        public static Account Map(DbAccount account)
         {
             return new Account(
                 account.User_Name,

@@ -3,17 +3,17 @@ namespace bankLedger.Models
 {
     public class Account
     {
-        public Account(string userName, string password, string salt,
+        public Account(string userName, string encryptedPassword, string salt,
                         DateTime? lastLogin)
         {
             UserName = userName;
-            Password = password;
+            EncryptedPassword = encryptedPassword;
             Salt = salt;
             LastLogin = lastLogin;
         }
 
         public string UserName { get; }
-        public string Password { get; }
+        public string EncryptedPassword { get; }
         public string Salt { get; }
         public DateTime? LastLogin { get; }
     }

@@ -10,15 +10,13 @@ namespace bankLedger.Data.Services
         {
             AccountService = new AccountService(this);
             LedgerService = new LedgerService(this);
-            HashService = new HashService();
             DataBase = db;
         }
 
         public IAccountService AccountService { get; }
         public ILedgerService LedgerService { get; }
-        public IHashService HashService { get; }
 
         //This is because persistant data is not implemented
-        public Dictionary<string, object> DataBase { get; set; }
+        public IDictionary<string, object> DataBase { get; set; }
     }
 }

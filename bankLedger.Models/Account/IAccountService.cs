@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Web.SessionState;
+
 namespace bankLedger.Models
 {
     public interface IAccountService
     {
-        bool CreateAccount(Account account);
-        Account SignIn(string username, string encryptedPassword);
-        bool SignOut(Account account);
+        Account CreateAccount(string userName, string decryptedPassowrd);
+        Account SignIn(string userName, string decryptedPassowrd, HttpSessionState session);
+        bool SignOut(Account account, HttpSessionState session);
     }
 }

@@ -5,9 +5,9 @@ using bankLedger.Models;
 
 namespace bankLedger.Data.Services
 {
-    internal class HashService : IHashService
+    public static class HashService
     {
-        public Tuple<string, string> ComputeHash(string plainText)
+        public static Tuple<string, string> ComputeHash(string plainText)
         {
             var random = new Random();
             int saltSize = random.Next(c_minSaltSize, c_maxSaltSize);
@@ -24,7 +24,7 @@ namespace bankLedger.Data.Services
                 Convert.ToBase64String(saltBytes));
         }
 
-        public bool VerifyHash(string plainText, string hashValue, string salt)
+        public static  bool VerifyHash(string plainText, string hashValue, string salt)
         {
             var hashWithSaltBytes = Convert.FromBase64String(hashValue);
 
@@ -38,7 +38,7 @@ namespace bankLedger.Data.Services
             return hashValue == expectedString;
         }
 
-        private byte[] GetPbkdf2Bytes(string password, byte[] salt, 
+        private static byte[] GetPbkdf2Bytes(string password, byte[] salt, 
             int iterations, int outputBytes)
         {
             var pbkdf2 = new Rfc2898DeriveBytes(password, salt)
