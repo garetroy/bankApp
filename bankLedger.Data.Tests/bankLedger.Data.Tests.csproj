@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="ServiceTests\AccountServiceTest.cs" />
     <Compile Include="ServiceTests\LedgerServiceTest.cs" />
+    <Compile Include="HashUtilityTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -3,9 +3,9 @@ using System.Security.Cryptography;
 using System.Text;
 using bankLedger.Models;
 
-namespace bankLedger.Data.Services
+namespace bankLedger.Data
 {
-    public static class HashService
+    public static class HashUtility
     {
         public static Tuple<string, string> ComputeHash(string plainText)
         {

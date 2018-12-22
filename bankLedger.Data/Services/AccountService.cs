@@ -28,7 +28,7 @@ namespace bankLedger.Data.Services
             if (BankLedgerService.DataBase.ContainsKey(dbKey))
                 return null;
 
-            var encryptedPasswordAndSalt = HashService.
+            var encryptedPasswordAndSalt = HashUtility.
                 ComputeHash(decryptedPassword);
 
             var dbAccount = new DbAccount
@@ -72,7 +72,7 @@ namespace bankLedger.Data.Services
 
             var account = AccountMapper.Map((DbAccount)BankLedgerService.DataBase[dbKey]);
 
-            if(HashService.VerifyHash(decryptedPassword, 
+            if(HashUtility.VerifyHash(decryptedPassword, 
                                                 account.EncryptedPassword,
                                                 account.Salt))
             {
