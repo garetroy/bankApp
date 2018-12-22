@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Web;
 using System.Web.SessionState;
 using bankLedger.Data.DbObject;
 using bankLedger.Data.Mappers;
@@ -40,12 +42,16 @@ namespace bankLedger.Data.Services
         }
 
         public Account SignIn(string userName, string decryptedPassword,
-                HttpSessionState session)
+                HttpSessionStateBase session)
         {
             var dbKey = $"USER_{userName.ToLower()}";
 
             //Account dosen't exist
             if (!BankLedgerService.DataBase.ContainsKey(dbKey))
+                return null;
+
+            //Account already loggedin
+            if (((Account)session["CURRENTUSER"])?.UserName == userName)
                 return null;
 
             var account = AccountMapper.Map((DbAccount)BankLedgerService.DataBase[dbKey]);
@@ -61,9 +67,10 @@ namespace bankLedger.Data.Services
             return null;
         }
 
-        public bool SignOut(Account account, HttpSessionState session)
+        public bool SignOut(Account account, HttpSessionStateBase session)
         {
-            if (((DbAccount)session["CURRENTUSER"]).User_Name != account.UserName)
+            //Cannot logout an account that wasn't already logged in.
+            if (((Account)session["CURRENTUSER"])?.UserName != account.UserName)
                 return false;
 
             session["CURRENTUSER"] = null;

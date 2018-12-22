@@ -4,6 +4,9 @@ using Moq;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.SessionState;
 
 namespace bankLedger.Data.Tests
 {
@@ -29,6 +32,64 @@ namespace bankLedger.Data.Tests
             // same name but different capitalization
             var failure2 = accountService.CreateAccount("succEss", "test");
             Assert.IsNull(failure2);
+        }
+
+        [Test]
+        public void SignInTests()
+        {
+            var dictionary = new Dictionary<string, object>();
+            var service = new Mock<IBankLedgerService>();
+            service.SetupGet(x => x.DataBase).Returns(dictionary);
+            var accountService = new AccountService(service.Object);
+            var session = new FakeSessionState();
+
+            var account = accountService.CreateAccount("testing", "login");
+
+            //BadLogin
+            Assert.IsNull(session["CURRENTUSER"]);
+            Assert.IsNull(accountService.SignIn("testing", "badPassword", session));
+            Assert.IsNull(session["CURRENTUSER"]);
+
+            //Correct Login
+            Assert.IsNotNull(accountService.SignIn("testing", "login", session));
+            Assert.IsNotNull(session["CURRENTUSER"]);
+
+            //Already Logged in
+            Assert.IsNull(accountService.SignIn("testing", "login", session));
+
+            //Case Insensitive username
+            session["CURRENTUSER"] = null;
+            Assert.IsNotNull(accountService.SignIn("testing", "login", session));
+        }
+
+        [Test]
+        public void SignOutTests()
+        {
+            var dictionary = new Dictionary<string, object>();
+            var service = new Mock<IBankLedgerService>();
+            service.SetupGet(x => x.DataBase).Returns(dictionary);
+            var accountService = new AccountService(service.Object);
+            var session = new FakeSessionState();
+
+            var account = accountService.CreateAccount("testing", "logout");
+            session["CURRENTUSER"] = account;
+
+            //Don't log out an account that wasnt already logged in
+            var account2 = accountService.CreateAccount("testing2", "logout");
+            Assert.IsFalse(accountService.SignOut(account2, session));
+
+            Assert.IsTrue(accountService.SignOut(account, session));
+            Assert.IsNull(session["CURRENTUSER"]);
+        }
+
+        private class FakeSessionState : HttpSessionStateBase
+        {
+            Dictionary<string, object> items = new Dictionary<string, object>();
+            public override object this[string name]
+            {
+                get { return items.ContainsKey(name) ? items[name] : null; }
+                set { items[name] = value; }
+            }
         }
     }
 }
