@@ -5,13 +5,14 @@ namespace bankLedger.Models
 {
     public class Ledger
     {
-        public Ledger(TransactionType transactionType, decimal amount)
+        public Ledger(ulong ledgerId, TransactionType transactionType, decimal amount)
         {
+            LedgerId = ledgerId;
             TransactionType = transactionType;
             Amount = amount;
         }
 
-        public Ledger(int transactionType, decimal amount)
+        public Ledger(ulong ledgerId, int transactionType, decimal amount)
         {
             var enumValues = Enum.GetValues(typeof(TransactionType)).Cast<int>();
             var maxVal = enumValues.Max();
@@ -25,10 +26,12 @@ namespace bankLedger.Models
                 throw new ArgumentOutOfRangeException(errorString);
             }
 
+            LedgerId = ledgerId;
             TransactionType = (TransactionType)transactionType;
             Amount = amount;
         }
 
+        public ulong LedgerId { get; }
         public TransactionType TransactionType { get; }
         public decimal Amount { get; }
     }

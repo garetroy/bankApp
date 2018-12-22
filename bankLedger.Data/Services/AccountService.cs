@@ -11,11 +11,17 @@ namespace bankLedger.Data.Services
     {
         public AccountService(IBankLedgerService service)
         {
-            BankLedgerService = service;
+            BankLedgerService = service ?? throw new ArgumentException("Cannot instantiate AccountService.");
         }
 
         public Account CreateAccount(string userName, string decryptedPassword)
         {
+            if (string.IsNullOrWhiteSpace(userName))
+                throw new ArgumentException("Username was null or whitespace");
+
+            if (string.IsNullOrWhiteSpace(decryptedPassword))
+                throw new ArgumentException("Password was null or whitespace");
+
             var dbKey = $"USER_{userName.ToLower()}";
 
             //The account already exists
@@ -44,6 +50,16 @@ namespace bankLedger.Data.Services
         public Account SignIn(string userName, string decryptedPassword,
                 HttpSessionStateBase session)
         {
+            if (string.IsNullOrWhiteSpace(userName))
+                throw new ArgumentException("Username was null or whitespace");
+
+            if (string.IsNullOrWhiteSpace(decryptedPassword))
+                throw new ArgumentException("Password was null or whitespace");
+
+            if(session == null)
+                throw new ArgumentException("Session was null");
+
+
             var dbKey = $"USER_{userName.ToLower()}";
 
             //Account dosen't exist
@@ -60,6 +76,7 @@ namespace bankLedger.Data.Services
                                                 account.EncryptedPassword,
                                                 account.Salt))
             {
+                ((DbAccount)BankLedgerService.DataBase[dbKey]).Last_Login = DateTime.Now;
                 session["CURRENTUSER"] = account;
                 return account;
             }
@@ -69,6 +86,12 @@ namespace bankLedger.Data.Services
 
         public bool SignOut(Account account, HttpSessionStateBase session)
         {
+            if (account == null || string.IsNullOrWhiteSpace(account.UserName))
+                throw new ArgumentException("Account or Username was invalid/null");
+
+            if (session == null)
+                throw new ArgumentException("Session was null");
+
             //Cannot logout an account that wasn't already logged in.
             if (((Account)session["CURRENTUSER"])?.UserName != account.UserName)
                 return false;

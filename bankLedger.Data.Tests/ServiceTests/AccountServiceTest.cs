@@ -8,7 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.SessionState;
 
-namespace bankLedger.Data.Tests
+namespace bankLedger.Data.Tests.ServiceTests
 {
     [TestFixture]
     public class AccountServiceTest

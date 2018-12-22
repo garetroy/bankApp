@@ -6,11 +6,12 @@ namespace bankLedger.Data.Mappers
 {
     internal sealed class LedgerMapper
     {
-        public Ledger Map(DbLedger ledger)
+        public static Ledger Map(DbLedger ledger)
         {
             return new Ledger(
-            ledger.Transaction_Type,
-            ledger.Amount);
+                ledger.Ledger_Id,
+                ledger.Transaction_Type,
+                ledger.Amount);
         }
     }
 }

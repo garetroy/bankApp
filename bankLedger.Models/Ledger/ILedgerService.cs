@@ -6,7 +6,7 @@ namespace bankLedger.Models
     public interface ILedgerService
     {
         ICollection<Ledger> GetAllLedgers(Account account);
-        bool CreateLedger(Account account, Ledger ledger);
+        Ledger CreateLedger(Account account, Ledger ledger);
         decimal GetTotalBalance(Account account);
     }
 }
