@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bankLedger.Data", "bankLedg
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bankLedger.Data.Tests", "bankLedger.Data.Tests\bankLedger.Data.Tests.csproj", "{A003C0DC-EBDB-4F60-AED7-085C75280120}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bankLedger.Web.Tests", "bankLedger.Web.Tests\bankLedger.Web.Tests.csproj", "{784414C9-F3C0-420E-ACEC-165C7469671B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,5 +33,9 @@ Global
 		{A003C0DC-EBDB-4F60-AED7-085C75280120}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A003C0DC-EBDB-4F60-AED7-085C75280120}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A003C0DC-EBDB-4F60-AED7-085C75280120}.Release|Any CPU.Build.0 = Release|Any CPU
+		{784414C9-F3C0-420E-ACEC-165C7469671B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{784414C9-F3C0-420E-ACEC-165C7469671B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{784414C9-F3C0-420E-ACEC-165C7469671B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{784414C9-F3C0-420E-ACEC-165C7469671B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

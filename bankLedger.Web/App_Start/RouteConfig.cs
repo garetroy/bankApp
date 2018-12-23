@@ -29,6 +29,27 @@ namespace bankLedger.Web
                 );
 
             routes.MapRoute(
+                name: "AttemptLogin",
+                url: "Login/AttemptLogin",
+                defaults: new { controller = "Login", action = "AttemptLogin" },
+                constraints: new { httpMethod = new HttpMethodConstraint("POST") }
+                );
+
+            routes.MapRoute(
+                name: "CreateUser",
+                url: "Login/CreateUser",
+                defaults: new { controller = "Login", action = "CreateUser" },
+                constraints: new { httpMethod = new HttpMethodConstraint("GET") }
+                );
+
+            routes.MapRoute(
+                name: "CreateUserSubmit",
+                url: "Login/CreateUserSubmit",
+                defaults: new { controller = "Login", action = "CreateUserSubmit" },
+                constraints: new { httpMethod = new HttpMethodConstraint("POST") }
+                );
+
+            routes.MapRoute(
                 name: "Logout",
                 url: "Login/Logout",
                 defaults: new { controller = "Login", action = "Logout" },

@@ -95,6 +95,7 @@
     <Folder Include="Content\css\" />
     <Folder Include="Views\Login\" />
     <Folder Include="Views\Account\" />
+    <Folder Include="Dtos\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">
@@ -110,6 +111,9 @@
     <Compile Include="App_Start\TypeConfig.cs" />
     <Compile Include="App_Start\StructureMapResolver.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Dtos\LoginDto.cs" />
+    <Compile Include="Dtos\CreateUserDto.cs" />
+    <Compile Include="Models\AttemptCreateUserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />
@@ -128,6 +132,7 @@
     <Content Include="Views\Account\AccountInfo.cshtml" />
     <Content Include="Views\Account\AccountLedger.cshtml" />
     <Content Include="Views\Account\_ledger.cshtml" />
+    <Content Include="Views\Login\CreateUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\bankLedger.Model\bankLedger.Models.csproj">

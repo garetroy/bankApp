@@ -84,20 +84,16 @@ namespace bankLedger.Data.Services
             return null;
         }
 
-        public bool SignOut(Account account, HttpSessionStateBase session)
+        public bool IsSignedIn(HttpSessionStateBase session)
         {
-            if (account == null || string.IsNullOrWhiteSpace(account.UserName))
-                throw new ArgumentException("Account or Username was invalid/null");
+            if(session["CURRENTUSER"] != null)
+                return true;
+            return false;
+        }
 
-            if (session == null)
-                throw new ArgumentException("Session was null");
-
-            //Cannot logout an account that wasn't already logged in.
-            if (((Account)session["CURRENTUSER"])?.UserName != account.UserName)
-                return false;
-
+        public void SignOut(HttpSessionStateBase session)
+        {
             session["CURRENTUSER"] = null;
-            return true;
         }
 
         public IBankLedgerService BankLedgerService { get; }

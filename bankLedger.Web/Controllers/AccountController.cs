@@ -16,7 +16,7 @@ namespace bankLedger.Web.Controllers
 
         public ActionResult AccountLedger()
         {
-            return View();
+            return BaseView("AccountLedger");
         }
 
         public ActionResult AccountInfo()

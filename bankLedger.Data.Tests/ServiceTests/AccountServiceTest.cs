@@ -63,6 +63,22 @@ namespace bankLedger.Data.Test.ServiceTests
         }
 
         [Test]
+        public void SignedInTests()
+        {
+            var dictionary = new Dictionary<string, object>();
+            var service = new Mock<IBankLedgerService>();
+            service.SetupGet(x => x.DataBase).Returns(dictionary);
+            var accountService = new AccountService(service.Object);
+            var session = new FakeSessionState();
+
+            var account = accountService.CreateAccount("testing", "login");
+
+            Assert.IsFalse(accountService.IsSignedIn(session));
+            session["CURRENTUSER"] = account;
+            Assert.IsTrue(accountService.IsSignedIn(session));
+        }
+
+        [Test]
         public void SignOutTests()
         {
             var dictionary = new Dictionary<string, object>();
@@ -76,9 +92,11 @@ namespace bankLedger.Data.Test.ServiceTests
 
             //Don't log out an account that wasnt already logged in
             var account2 = accountService.CreateAccount("testing2", "logout");
-            Assert.IsFalse(accountService.SignOut(account2, session));
+            session["CURRENTUSER"] = account2;
+            accountService.SignOut(session);
+            Assert.IsNull(session["CURRENTUSER"]);
 
-            Assert.IsTrue(accountService.SignOut(account, session));
+            accountService.SignOut(session);
             Assert.IsNull(session["CURRENTUSER"]);
         }
 
