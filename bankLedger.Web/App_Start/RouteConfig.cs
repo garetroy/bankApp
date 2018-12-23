@@ -72,6 +72,13 @@ namespace bankLedger.Web
                 defaults: new { controller = "Account", action = "AccountLedger" },
                 constraints: new { httpMethod = new HttpMethodConstraint("GET") }
                 );
+
+            routes.MapRoute(
+                name: "CreateAccountLedger",
+                url: "Account/CreateAccountLedger",
+                defaults: new { controller = "Account", action = "CreateAccountLedger" },
+                constraints: new { httpMethod = new HttpMethodConstraint("POST") }
+                );
         }
     }
 }

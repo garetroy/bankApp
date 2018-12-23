@@ -84,7 +84,7 @@ namespace bankLedger.Data.Services
             return null;
         }
 
-        public bool IsSignedIn(HttpSessionStateBase session)
+        public Account IsSignedIn(HttpSessionStateBase session)
         {
             if(session["CURRENTUSER"] != null)
                 return true;

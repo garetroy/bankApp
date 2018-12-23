@@ -114,6 +114,8 @@
     <Compile Include="Dtos\LoginDto.cs" />
     <Compile Include="Dtos\CreateUserDto.cs" />
     <Compile Include="Models\AttemptCreateUserViewModel.cs" />
+    <Compile Include="Dtos\AccountLedgerDto.cs" />
+    <Compile Include="Models\AccountLedgerViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />

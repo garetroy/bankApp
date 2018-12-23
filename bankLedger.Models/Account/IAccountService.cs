@@ -8,7 +8,7 @@ namespace bankLedger.Models
     {
         Account CreateAccount(string userName, string decryptedPassowrd);
         Account SignIn(string userName, string decryptedPassowrd, HttpSessionStateBase session);
-        bool IsSignedIn(HttpSessionStateBase session);
+        Account IsSignedIn(HttpSessionStateBase session);
         void SignOut(HttpSessionStateBase session);
     }
 }
