@@ -3,7 +3,7 @@
     const TransactionType = $("#transactionType").val();
     const Amount = $("#amount").val();
 
-    if(!Amount) {
+    if(!Amount || isNaN(parseFloat(Amount))) {
         $("#badAmount").removeClass("d-none");
         return;
     }
