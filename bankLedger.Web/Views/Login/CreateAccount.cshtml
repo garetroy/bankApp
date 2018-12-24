@@ -1,0 +1,16 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <input id="userName" class="login-input" placeholder="Desired User Name" />
+    <input id="password" class="login-input" placeholder="Password" />
+    <input id="passwordVerification" class="login-input" placeholder="Verify Password" />
+    <br />
+    <input id="createUser" class="btn btn-primary forestgreen" type="button" value="Create User" />
+    <br />
+    <span id="badPassword" class="login-span error d-none">Password cannot be empty or blank.</span>
+    <span id="noMatch" class="login-span error d-none">Passwords do not match.</span>
+    <span id="badRequest" class="login-span error d-none">There was a problem processing your request.</span>
+    <span id="badUserName" class="login-span error d-none">Not a valid user name.</span>
+</div>

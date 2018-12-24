@@ -51,14 +51,13 @@ namespace bankLedger.Data.Services
                 HttpSessionStateBase session)
         {
             if (string.IsNullOrWhiteSpace(userName))
-                throw new ArgumentException("Username was null or whitespace");
+                return null;
 
             if (string.IsNullOrWhiteSpace(decryptedPassword))
-                throw new ArgumentException("Password was null or whitespace");
+                return null;
 
-            if(session == null)
-                throw new ArgumentException("Session was null");
-
+            if (session == null)
+                return null;
 
             var dbKey = $"USER_{userName.ToLower()}";
 

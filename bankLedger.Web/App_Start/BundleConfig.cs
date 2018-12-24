@@ -17,10 +17,11 @@ namespace bankLedger.Web.App_Start
 
             bundles.Add(new ScriptBundle("~/bundles/main").Include(
                 "~/Scripts/login.js",
+                "~/Scripts/createAccount.js",
                 "~/Scripts/ledgerForm.js"
             ));
 
-            BundleTable.EnableOptimizations = true;
+            BundleTable.EnableOptimizations = false;
         }
     }
 }

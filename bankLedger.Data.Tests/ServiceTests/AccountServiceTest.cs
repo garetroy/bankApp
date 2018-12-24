@@ -73,9 +73,9 @@ namespace bankLedger.Data.Test.ServiceTests
 
             var account = accountService.CreateAccount("testing", "login");
 
-            Assert.IsFalse(accountService.IsSignedIn(session));
+            Assert.IsNull(accountService.IsSignedIn(session));
             session["CURRENTUSER"] = account;
-            Assert.IsTrue(accountService.IsSignedIn(session));
+            Assert.IsNotNull(accountService.IsSignedIn(session));
         }
 
         [Test]

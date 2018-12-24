@@ -4,6 +4,7 @@ using StructureMap.Web;
 using bankLedger.Models;
 using bankLedger.Data.Services;
 using System.Collections.Generic;
+using bankLedger.Data;
 
 namespace bankLedger.Web.App_Start
 {
@@ -13,11 +14,9 @@ namespace bankLedger.Web.App_Start
         {
             return new Container(x =>
             {
-                x.For<IBankLedgerService>().HttpContextScoped().Use(c => new BankLedgerService(DataBase));
+                x.For<DataBase>().Singleton().Use(c => new DataBase());
+                x.For<IBankLedgerService>().HttpContextScoped().Use(c => new BankLedgerService(c.GetInstance<DataBase>().DB));
             });
         }
-
-        //Because we are not using persistant storage
-        public static Dictionary<string, object> DataBase = new Dictionary<string, object>();
     }
 }

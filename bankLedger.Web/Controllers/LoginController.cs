@@ -31,7 +31,7 @@ namespace bankLedger.Web.Controllers
         public ActionResult AttemptLogin(LoginDto dto)
         {
             if(BankLedgerService.AccountService.IsSignedIn(Session) != null)
-                return RedirectToAction("AccountInfo", "Account");
+                return Json(new { data = false });
 
 
             var account = BankLedgerService.AccountService.SignIn(dto.UserName,
@@ -54,15 +54,12 @@ namespace bankLedger.Web.Controllers
 
             var model = new AttemptCreateUserViewModel();
 
-            return BaseView("CreateUser", model);
+            return BaseView("CreateAccount", model);
         }
 
         [HttpPost]
-        public ActionResult CreateUserSubmit(CreateUserDto dto)
+        public ActionResult CreateAccountSubmit(CreateUserDto dto)
         {
-            if (BankLedgerService.AccountService.IsSignedIn(Session) != null)
-                return RedirectToAction("AccountInfo", "Account");
-
             var newUser = BankLedgerService.AccountService.CreateAccount(dto.UserName,
                                                             dto.Password);
 

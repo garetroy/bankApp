@@ -49,6 +49,7 @@
     <Compile Include="Services\BankLedgerService.cs" />
     <Compile Include="Services\LedgerService.cs" />
     <Compile Include="HashUtility.cs" />
+    <Compile Include="DataBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\bankLedger.Model\bankLedger.Models.csproj">
