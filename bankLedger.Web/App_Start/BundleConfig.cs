@@ -12,13 +12,14 @@ namespace bankLedger.Web.App_Start
             ));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                "~/Scripts/jQuery-3.3.1.min.js"
+                "~/Scripts/jQuery-3.3.1.min.js",
+                "~/Scripts/bootstrap.min.js"
             ));
 
             bundles.Add(new ScriptBundle("~/bundles/main").Include(
                 "~/Scripts/login.js",
                 "~/Scripts/createAccount.js",
-                "~/Scripts/ledgerForm.js"
+                "~/Scripts/accountLedger.js"
             ));
 
             BundleTable.EnableOptimizations = false;

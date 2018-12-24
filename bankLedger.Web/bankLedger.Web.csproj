@@ -129,15 +129,15 @@
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Scripts\jQuery-3.3.1.min.js" />
     <Content Include="Scripts\login.js" />
-    <Content Include="Scripts\ledgerForm.js" />
+    <Content Include="Scripts\accountLedger.js" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Login\Logout.cshtml" />
     <Content Include="Views\Account\AccountInfo.cshtml" />
     <Content Include="Views\Account\AccountLedger.cshtml" />
-    <Content Include="Views\Account\_ledger.cshtml" />
     <Content Include="Views\Login\CreateAccount.cshtml" />
     <Content Include="Content\css\navbar.css" />
     <Content Include="Scripts\createAccount.js" />
+    <Content Include="Views\Account\_Ledger.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\bankLedger.Model\bankLedger.Models.csproj">

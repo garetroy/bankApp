@@ -1,7 +1,18 @@
-﻿@{
+﻿@using bankLedger.Web.Models
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
-
 }
 
-<h2>AccountInfo</h2>
+
+<div class="justify-content-center">
+    <span>User Name: @Model.UserName</span>
+    <br />
+    <span>Amount Of Ledgers: @Model.LegderCount.ToString()</span>
+    <br />
+    <span>Total Bank Amount: @Model.TotalAmount.ToString("C")</span>
+    <br />
+    <a href="/Login/Logout">
+        <input class="btn btn-primary forest-green no-outline" type="button" value="Logout" />
+    </a>
+</div>
 

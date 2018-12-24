@@ -30,12 +30,12 @@ namespace bankLedger.Web.Controllers
 
             var model = new AccountLedgerViewModel
             {
-                Ledgers = ledgers.Select(x => new LedgerViewModel
+                Ledgers = ledgers?.Select(x => new LedgerViewModel
                 {
                     LedgerId = x.LedgerId,
                     TransactionType = x.TransactionType,
                     Amount = x.Amount
-                }).ToList()
+                }).ToList() ?? new List<LedgerViewModel>()
             };
 
             return BaseView("AccountLedger", model);
@@ -47,7 +47,7 @@ namespace bankLedger.Web.Controllers
             var account = BankLedgerService.AccountService.IsSignedIn(Session);
 
             if (account == null)
-                RedirectToAction("Login", "Login");
+               return BadRequest("Account not authorized");
 
             var ledger = new Ledger(0, dto.TransactionType, dto.Amount);
 
@@ -56,7 +56,14 @@ namespace bankLedger.Web.Controllers
             if (newLedger == null)
                 return BadRequest("Could not create Ledger");
 
-            return Ok();
+            var model = new LedgerViewModel
+            {
+                LedgerId = newLedger.LedgerId,
+                Amount = newLedger.Amount,
+                TransactionType = newLedger.TransactionType
+            };
+
+            return PartialView("_Ledger", model);
         }
 
         [HttpGet]
@@ -67,7 +74,7 @@ namespace bankLedger.Web.Controllers
             if (account == null)
                 return RedirectToAction("Login", "Login");
 
-            var count = BankLedgerService.LedgerService.GetAllLedgers(account).Count;
+            var count = BankLedgerService.LedgerService.GetAllLedgers(account)?.Count ?? 0;
             var totalAmount = BankLedgerService.LedgerService.GetTotalBalance(account);
 
             var model = new AccountInfoViewModel
