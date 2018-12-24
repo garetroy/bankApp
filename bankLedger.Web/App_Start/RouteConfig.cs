@@ -36,9 +36,9 @@ namespace bankLedger.Web
                 );
 
             routes.MapRoute(
-                name: "CreateUser",
-                url: "Login/CreateUser",
-                defaults: new { controller = "Login", action = "CreateUser" },
+                name: "CreateAccount",
+                url: "Login/CreateAccount",
+                defaults: new { controller = "Login", action = "CreateAccount" },
                 constraints: new { httpMethod = new HttpMethodConstraint("GET") }
                 );
 

@@ -47,7 +47,7 @@ namespace bankLedger.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult CreateUser()
+        public ActionResult CreateAccount()
         {
             if (BankLedgerService.AccountService.IsSignedIn(Session) != null)
                 return RedirectToAction("AccountInfo", "Account");
