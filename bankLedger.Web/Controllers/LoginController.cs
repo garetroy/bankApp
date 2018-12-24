@@ -30,7 +30,7 @@ namespace bankLedger.Web.Controllers
         [HttpPost]
         public ActionResult AttemptLogin(LoginDto dto)
         {
-            if(BankLedgerService.AccountService.IsSignedIn(Session != null)
+            if(BankLedgerService.AccountService.IsSignedIn(Session) != null)
                 return RedirectToAction("AccountInfo", "Account");
 
 
@@ -69,7 +69,7 @@ namespace bankLedger.Web.Controllers
             if(newUser == null)
             {
                 //Don't redirect, creation was a failure
-                return Json(new { data = false });
+                return BadRequest("Could not create account.");
             }
 
             var model = new LoginViewModel
@@ -77,7 +77,7 @@ namespace bankLedger.Web.Controllers
                 SuccessfulCreate = true
             };
             //Redirect to login
-            return Json(new { data = true });
+            return Ok();
 
         }
 
