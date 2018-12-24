@@ -138,6 +138,7 @@
     <Content Include="Content\css\navbar.css" />
     <Content Include="Scripts\createAccount.js" />
     <Content Include="Views\Account\_Ledger.cshtml" />
+    <Content Include="Content\css\main.css" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\bankLedger.Model\bankLedger.Models.csproj">

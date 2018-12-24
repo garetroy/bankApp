@@ -8,7 +8,8 @@ namespace bankLedger.Web.App_Start
         {
             bundles.Add(new StyleBundle("~/bundles/styles").Include(
                 "~/Content/css/bootstrap.min.css",
-                "~/Content/css/navbar.css"
+                "~/Content/css/navbar.css",
+                "~/Content/css/main.css"
             ));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
@@ -22,7 +23,7 @@ namespace bankLedger.Web.App_Start
                 "~/Scripts/accountLedger.js"
             ));
 
-            BundleTable.EnableOptimizations = false;
+            BundleTable.EnableOptimizations = true;
         }
     }
 }

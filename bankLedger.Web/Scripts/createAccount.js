@@ -1,5 +1,9 @@
 ﻿const SubmitCreateAccount = function()
 {
+    $("#badRequest").addClass("d-none");
+    $("#badPassword").addClass("d-none");
+    $("#noMatch").addClass("d-none");
+    $("#badUserName").addClass("d-none");
 
     const userName = $("#userName").val();
     const password = $("#password").val();
@@ -8,7 +12,7 @@
 
     if(!userName) {
         $("#badUserName").removeClass("d-none");
-        return
+        return;
     }
 
     if(!password) {
@@ -16,13 +20,10 @@
         return;
     }
 
-
     if(password !== verifyPassword || !password){
         $("#noMatch").removeClass("d-none");
         return;
     }
-
-
 
     const dto = {
         "UserName": userName,
@@ -49,10 +50,7 @@
 $(document).ready(function() {
     const $createBtn = $("#createUser");
     if($createBtn.length > 0){
-        $("#badRequest").addClass("d-none");
-        $("#badPassword").addClass("d-none");
-        $("#noMatch").addClass("d-none");
-        $("#badUserName").addClass("d-none");
+
         $createBtn.on("click", SubmitCreateAccount);
      }
 });
