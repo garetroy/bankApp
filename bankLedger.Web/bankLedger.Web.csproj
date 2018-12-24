@@ -116,6 +116,7 @@
     <Compile Include="Models\AttemptCreateUserViewModel.cs" />
     <Compile Include="Dtos\AccountLedgerDto.cs" />
     <Compile Include="Models\AccountLedgerViewModel.cs" />
+    <Compile Include="Models\AccountInfoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />
@@ -135,6 +136,7 @@
     <Content Include="Views\Account\AccountLedger.cshtml" />
     <Content Include="Views\Account\_ledger.cshtml" />
     <Content Include="Views\Login\CreateUser.cshtml" />
+    <Content Include="Content\css\navbar.css" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\bankLedger.Model\bankLedger.Models.csproj">
