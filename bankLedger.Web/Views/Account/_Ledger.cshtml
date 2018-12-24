@@ -5,5 +5,5 @@
 <tr>
     <th scope="row">@Model.LedgerId</th>
     <td>@Model.TransactionType.ToString()</td>
-    <td>@(Model.TransactionType == TransactionType.Deposit ? "" : "-" + Model.Amount.ToString("C"))</td>
+    <td>@(((Model.TransactionType == TransactionType.Deposit ? 1 : -1) * Model.Amount).ToString("C"))</td>
 </tr>
