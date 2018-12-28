@@ -67,10 +67,6 @@ namespace bankLedger.Web.Controllers
                 return BadRequest("Could not create account.");
             }
 
-            var model = new LoginViewModel
-            {
-                SuccessfulCreate = true
-            };
             //Redirect to login
             return Ok();
 
@@ -80,9 +76,7 @@ namespace bankLedger.Web.Controllers
         public ActionResult Logout()
         {
             BankLedgerService.AccountService.SignOut(Session);
-            return Redirect("/");
+                return RedirectToAction("Login", "Login");
         }
-
-        public readonly StructureMapResolver m_resolver;
     }
 }
