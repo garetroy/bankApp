@@ -107,7 +107,7 @@
     <Compile Include="Models\LedgerViewModel.cs" />
     <Compile Include="Models\AccountDetailsViewModel.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\LedgerController.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="App_Start\TypeConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />

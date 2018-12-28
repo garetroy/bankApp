@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using bankLedger.Models;
-using bankLedger.Web.App_Start;
 using bankLedger.Web.Dtos;
 using bankLedger.Web.Models;
 
 namespace bankLedger.Web.Controllers
 {
-    public class AccountController : BaseController
+    public class LedgerController : BaseController
     {
-        public AccountController(IBankLedgerService service) : base(service) { }
+        public LedgerController(IBankLedgerService service) : base(service) { }
 
         [HttpGet]
         public ActionResult AccountLedger()
