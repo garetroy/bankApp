@@ -103,6 +103,7 @@
   <ItemGroup>
     <Compile Include="ControllerTests\LoginControllerTest.cs" />
     <Compile Include="ControllerTests\LedgerControllerTest.cs" />
+    <Compile Include="ControllerTests\FakeSessionState.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\bankLedger.Web\bankLedger.Web.csproj">
