@@ -1,6 +1,7 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
+VisualStudioVersion = 15.0.27428.2002
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bankLedger.Web", "bankLedger.Web\bankLedger.Web.csproj", "{131F3A39-A53E-4D13-B22D-AB4EFC6342E3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bankLedger.Models", "bankLedger.Model\bankLedger.Models.csproj", "{90E21F5F-5057-4977-91B2-3ED6DD385B97}"
@@ -37,5 +38,11 @@ Global
 		{784414C9-F3C0-420E-ACEC-165C7469671B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{784414C9-F3C0-420E-ACEC-165C7469671B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{784414C9-F3C0-420E-ACEC-165C7469671B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {945CDE96-3C3A-4585-899D-D8A8E2CCC87E}
 	EndGlobalSection
 EndGlobal

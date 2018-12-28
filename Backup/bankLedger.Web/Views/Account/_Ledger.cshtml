@@ -1,0 +1,9 @@
+﻿@using bankLedger.Web.Models
+@using bankLedger.Models
+@Model LedgerViewModel
+
+<tr>
+    <th scope="row">@Model.LedgerId</th>
+    <td>@Model.TransactionType.ToString()</td>
+    <td>@(((Model.TransactionType == TransactionType.Deposit ? 1 : -1) * Model.Amount).ToString("C"))</td>
+</tr>
