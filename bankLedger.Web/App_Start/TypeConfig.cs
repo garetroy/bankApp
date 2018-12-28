@@ -5,6 +5,7 @@ using bankLedger.Models;
 using bankLedger.Data.Services;
 using System.Collections.Generic;
 using bankLedger.Data;
+using bankLedger.Web.DependencyInjection;
 
 namespace bankLedger.Web.App_Start
 {
@@ -14,8 +15,7 @@ namespace bankLedger.Web.App_Start
         {
             return new Container(x =>
             {
-                x.For<DataBase>().Singleton().Use(c => new DataBase());
-                x.For<IBankLedgerService>().HttpContextScoped().Use(c => new BankLedgerService(c.GetInstance<DataBase>().DB));
+                x.AddRegistry(new AppRegister());
             });
         }
     }

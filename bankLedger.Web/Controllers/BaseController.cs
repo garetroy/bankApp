@@ -10,9 +10,9 @@ namespace bankLedger.Web.Controllers
 {
     public class BaseController : Controller
     {
-        protected BaseController(StructureMapResolver resolver)
+        protected BaseController(IBankLedgerService service)
         {
-            BankLedgerService = StructureMapResolver.GetService<IBankLedgerService>();
+            BankLedgerService = service;
         }
 
         protected ActionResult BaseView(string view = null, object model = null)

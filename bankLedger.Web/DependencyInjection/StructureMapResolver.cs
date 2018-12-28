@@ -13,11 +13,6 @@ namespace bankLedger.Web.App_Start
             m_container = container;
         }
 
-        public static T GetService<T>()
-        {
-            return (T)DependencyResolver.Current.GetService(typeof(T));
-        }
-
         public object GetService(Type serviceType)
         {
             if (serviceType.IsAbstract || serviceType.IsInterface)
