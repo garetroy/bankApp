@@ -113,7 +113,7 @@
     <Compile Include="Models\AccountLedgerViewModel.cs" />
     <Compile Include="Models\AccountInfoViewModel.cs" />
     <Compile Include="DependencyInjection\StructureMapResolver.cs" />
-    <Compile Include="DependencyInjection\AppRegister.cs" />
+    <Compile Include="DependencyInjection\BankLedgerRegistry.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />

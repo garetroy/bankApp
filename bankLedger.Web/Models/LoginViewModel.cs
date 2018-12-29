@@ -1,5 +1,4 @@
-﻿using System;
-namespace bankLedger.Web.Models
+﻿namespace bankLedger.Web.Models
 {
     public class LoginViewModel
     {
