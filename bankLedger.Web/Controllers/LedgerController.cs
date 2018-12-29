@@ -17,7 +17,7 @@ namespace bankLedger.Web.Controllers
             var account = BankLedgerService.AccountService.IsSignedIn(Session);
 
             if (account == null)
-                RedirectToAction("Login", "Login");
+                return RedirectToAction("Login", "Login");
 
 
             var ledgers = BankLedgerService.LedgerService.GetAllLedgers(account);
@@ -41,7 +41,7 @@ namespace bankLedger.Web.Controllers
             var account = BankLedgerService.AccountService.IsSignedIn(Session);
 
             if (account == null)
-               return BadRequest("Account not authorized");
+               return Forbidden("Account not authorized");
 
             var ledger = new Ledger(0, dto.TransactionType, dto.Amount);
 

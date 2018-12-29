@@ -4,15 +4,15 @@ using bankLedger.Web.Dtos;
 using Moq;
 using MvcContrib.TestHelper;
 using NUnit.Framework;
-using System.Collections.Generic;
 using System.Web;
 using System.Web.Mvc;
 
+//To supress warning from MvcContrib
 #pragma warning disable CS1701 // Assuming assembly reference matches identity
 namespace bankLedger.Web.Tests.ControllerTests
 {
     [TestFixture]
-    public class LoginControllerTest
+    public partial class LoginControllerTest
     {
         [SetUp]
         public void Init()
@@ -115,16 +115,6 @@ namespace bankLedger.Web.Tests.ControllerTests
         private Mock<IAccountService> AccountService { get; set; }
         private FakeSessionState Session { get; set; }
         private LoginController Controller { get; set; }
-
-        private class FakeSessionState : HttpSessionStateBase
-        {
-            Dictionary<string, object> items = new Dictionary<string, object>();
-            public override object this[string name]
-            {
-                get { return items.ContainsKey(name) ? items[name] : null; }
-                set { items[name] = value; }
-            }
-        }
     }
 }
 #pragma warning restore CS1701 // Assuming assembly reference matches identity
