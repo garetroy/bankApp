@@ -1,5 +1,4 @@
-﻿using System;
-using bankLedger.Data;
+﻿using bankLedger.Data;
 using bankLedger.Data.Services;
 using bankLedger.Models;
 using StructureMap;

@@ -1,5 +1,4 @@
-﻿using System;
-namespace bankLedger.Web.Dtos
+﻿namespace bankLedger.Web.Dtos
 {
     public class CreateUserDto
     { 

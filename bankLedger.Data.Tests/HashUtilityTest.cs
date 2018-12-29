@@ -1,6 +1,5 @@
 ﻿using NUnit.Framework;
 using System;
-using bankLedger.Data;
 namespace bankLedger.Data.Tests
 {
     [TestFixture]

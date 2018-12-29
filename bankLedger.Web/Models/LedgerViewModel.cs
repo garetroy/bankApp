@@ -1,5 +1,4 @@
-﻿using System;
-using bankLedger.Models;
+﻿using bankLedger.Models;
 
 namespace bankLedger.Web.Models
 {

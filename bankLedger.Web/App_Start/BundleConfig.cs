@@ -1,5 +1,4 @@
-﻿using System;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 namespace bankLedger.Web.App_Start
 {
     public class BundleConfig
