@@ -9,7 +9,7 @@ namespace bankLedger.Web.App_Start
         {
             return new Container(x =>
             {
-                x.AddRegistry(new AppRegister());
+                x.AddRegistry(new BankLedgerRegistry());
             });
         }
     }
