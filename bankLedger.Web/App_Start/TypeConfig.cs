@@ -3,7 +3,7 @@ using bankLedger.Web.DependencyInjection;
 
 namespace bankLedger.Web.App_Start
 {
-    public class TypeConfig
+    public static class TypeConfig
     {
         public static IContainer RegisterTypes()
         {
