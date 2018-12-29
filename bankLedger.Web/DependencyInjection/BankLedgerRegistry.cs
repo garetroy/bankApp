@@ -6,9 +6,9 @@ using StructureMap.Web;
 
 namespace bankLedger.Web.DependencyInjection
 {
-    public class AppRegister : Registry
+    public class BankLedgerRegistry : Registry
     {
-        public AppRegister()
+        public BankLedgerRegistry()
         {
             For<DataBase>().Singleton().Use(c => new DataBase());
             For<IBankLedgerService>().HttpContextScoped().Use(c => new BankLedgerService(c.GetInstance<DataBase>().DB));

@@ -75,7 +75,7 @@ namespace bankLedger.Web.Controllers
             {
                 LegderCount = (ulong)count,
                 TotalAmount = totalAmount,
-                UserName = account.UserName
+                AccountName = account.UserName
             };
 
             return BaseView("AccountInfo", model);

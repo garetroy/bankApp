@@ -137,7 +137,7 @@ namespace bankLedger.Web.Tests.ControllerTests
             var model = result.AssertViewRendered().WithViewData<AccountInfoViewModel>();
             Assert.AreEqual(0, model.LegderCount);
             Assert.AreEqual(10, model.TotalAmount);
-            Assert.AreEqual("name", model.UserName);
+            Assert.AreEqual("name", model.AccountName);
         }
 
         private ActionResult TestBadSignin(Func<ActionResult> func)
