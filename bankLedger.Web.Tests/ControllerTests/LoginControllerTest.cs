@@ -1,9 +1,11 @@
 ﻿using bankLedger.Models;
 using bankLedger.Web.Controllers;
 using bankLedger.Web.Dtos;
+using bankLedger.Web.Models;
 using Moq;
 using MvcContrib.TestHelper;
 using NUnit.Framework;
+using System;
 using System.Web;
 using System.Web.Mvc;
 
@@ -29,12 +31,11 @@ namespace bankLedger.Web.Tests.ControllerTests
         {
             Account account = null;
 
-            //Verify Non-Signed in action
-            AccountService.Setup(x => x.IsSignedIn(Session)).Returns(account);
-            var nonSignedInResult = Controller.Login();
-            nonSignedInResult.AssertViewRendered().ForView("Login");
+            //Verify Non-Signed in action to login
+            var result = Controller.Login();
+            result.AssertViewRendered().ForView("Login");
 
-            //Verify Redirect
+            //Verify Redirect to account info if already signed in
             account = new Account("a", "a", "a", null);
             AccountService.Setup(x => x.IsSignedIn(Session)).Returns(account);
             var signedInResult = Controller.Login();
@@ -47,6 +48,7 @@ namespace bankLedger.Web.Tests.ControllerTests
         {
             Account account = null;
 
+            //data = false, not signed in
             AccountService.Setup(x => x.IsSignedIn(Session)).Returns(account);
             var dto = new LoginDto
             {
@@ -56,13 +58,15 @@ namespace bankLedger.Web.Tests.ControllerTests
             var result = Controller.AttemptLogin(dto);
             result.AssertResultIs<ActionResult>().Equals(new { data = true });
 
+            //Data is false, bad signin credentials
             account = new Account("a", "a", "a", null);
-            AccountService.Setup(x => x.SignIn(It.IsAny<string>(), It.IsAny<string>(), 
+            AccountService.Setup(x => x.SignIn(It.IsAny<string>(), It.IsAny<string>(),
                 It.IsAny<HttpSessionStateBase>())).Returns((Account)null);
             result = Controller.AttemptLogin(dto);
             result.AssertResultIs<ActionResult>().Equals(new { data = false });
 
-            AccountService.Setup(x => x.SignIn(It.IsAny<string>(), It.IsAny<string>(), 
+            //Data is true, everything worked correctly
+            AccountService.Setup(x => x.SignIn(It.IsAny<string>(), It.IsAny<string>(),
                 Session)).Returns(account);
             result = Controller.AttemptLogin(dto);
             result.AssertResultIs<ActionResult>().Equals(new { data = true });
@@ -71,37 +75,41 @@ namespace bankLedger.Web.Tests.ControllerTests
         [Test]
         public void CreateAccount()
         {
+            //Automatically go to account info if already signed in
             Account account = new Account("a", "a", "a", null);
             AccountService.Setup(x => x.IsSignedIn(Session)).Returns(account);
             var result = Controller.CreateAccount();
             result.AssertActionRedirect().ToController("Account").ToAction("AccountInfo");
 
+            //Returnes proper view and model
             AccountService.Setup(x => x.IsSignedIn(Session)).Returns((Account)null);
             result = Controller.CreateAccount();
-            result.AssertViewRendered().ForView("CreateAccount");
+            result.AssertViewRendered().ForView("CreateAccount")
+                .WithViewData<AttemptCreateUserViewModel>();
         }
 
         [Test]
         public void CreateAccountSubmit()
         {
-            AccountService.Setup(x => x.CreateAccount(It.IsAny<string>(),
-            It.IsAny<string>())).Returns((Account)null);
-
             var dto = new CreateUserDto
             {
                 UserName = "",
                 Password = ""
             };
 
+            //Bad Request, an account ledger wasnt created
+            AccountService.Setup(x => x.IsSignedIn(It.IsAny<HttpSessionStateBase>()))
+                .Returns((Account)null);
             var result = Controller.CreateAccountSubmit(dto);
-            var statusCode = result.AssertResultIs<HttpStatusCodeResult>().StatusCode;
-            Assert.AreEqual(400, statusCode);
+            var code = result.AssertResultIs<HttpStatusCodeResult>().StatusCode;
+            Assert.AreEqual(400, code);
 
+            //Properly created acconut, return Ok() (200)
             AccountService.Setup(x => x.CreateAccount(It.IsAny<string>(),
             It.IsAny<string>())).Returns(new Account("a", "a", null, null));
             result = Controller.CreateAccountSubmit(dto);
-            statusCode = result.AssertResultIs<HttpStatusCodeResult>().StatusCode;
-            Assert.AreEqual(200, statusCode);
+            code = result.AssertResultIs<HttpStatusCodeResult>().StatusCode;
+            Assert.AreEqual(200, code);
         }
 
         [Test]
@@ -109,6 +117,26 @@ namespace bankLedger.Web.Tests.ControllerTests
         {
            Controller.Logout().AssertActionRedirect().ToController("Login")
                 .ToAction("Login");
+        }
+
+        private ActionResult TestBadSignin(Func<ActionResult> func)
+        {
+            AccountService.Setup(x => x.IsSignedIn(It.IsAny<HttpSessionStateBase>()))
+                .Returns((Account)null);
+            var result = func();
+
+            //If Forbidden then check for that (for posts)
+            if (result.GetType() == typeof(HttpStatusCodeResult))
+            {
+                var code = result.AssertResultIs<HttpStatusCodeResult>().StatusCode;
+                Assert.AreEqual(403, code);
+                return result;
+            }
+
+            //Else check redirect (for gets)
+            result.AssertActionRedirect().ToController("Login")
+                .ToAction("Login");
+            return result;
         }
 
         private Mock<IBankLedgerService> Service { get; set; }
