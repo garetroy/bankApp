@@ -16,12 +16,12 @@ namespace bankLedger.Web.Controllers
         [HttpGet]
         public ActionResult AccountLedger()
         {
-            var account = BankLedgerService.AccountService.IsSignedIn(Session);
+            Account account = BankLedgerService.AccountService.IsSignedIn(Session);
 
             if (account == null)
                 return RedirectToAction("Login", "Login");
 
-            var ledgers = BankLedgerService.LedgerService.GetAllLedgers(account);
+            ICollection<Ledger> ledgers = BankLedgerService.LedgerService.GetAllLedgers(account);
 
             var model = new AccountLedgerViewModel
             {
@@ -39,14 +39,14 @@ namespace bankLedger.Web.Controllers
         [HttpPost]
         public ActionResult CreateAccountLedger(AccountLedgerDto dto)
         {
-            var account = BankLedgerService.AccountService.IsSignedIn(Session);
+            Account account = BankLedgerService.AccountService.IsSignedIn(Session);
 
             if (account == null)
                 return Forbidden("Account not authorized");
 
             var ledger = new Ledger(0, dto.TransactionType, dto.Amount);
 
-            var newLedger = BankLedgerService.LedgerService.CreateLedger(account, ledger);
+            Ledger newLedger = BankLedgerService.LedgerService.CreateLedger(account, ledger);
             //If there was an error, then it was not successful.
             if (newLedger == null)
                 return BadRequest("Could not create Ledger");
@@ -64,13 +64,13 @@ namespace bankLedger.Web.Controllers
         [HttpGet]
         public ActionResult AccountInfo()
         {
-            var account = BankLedgerService.AccountService.IsSignedIn(Session);
+            Account account = BankLedgerService.AccountService.IsSignedIn(Session);
 
             if (account == null)
                 return RedirectToAction("Login", "Login");
 
-            var count = BankLedgerService.LedgerService.GetAllLedgers(account)?.Count ?? 0;
-            var totalAmount = BankLedgerService.LedgerService.GetTotalBalance(account);
+            int count = BankLedgerService.LedgerService.GetAllLedgers(account)?.Count ?? 0;
+            decimal totalAmount = BankLedgerService.LedgerService.GetTotalBalance(account);
 
             var model = new AccountInfoViewModel
             {

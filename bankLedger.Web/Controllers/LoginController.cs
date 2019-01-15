@@ -28,7 +28,7 @@ namespace bankLedger.Web.Controllers
             if (BankLedgerService.AccountService.IsSignedIn(Session) != null)
                 return Json(new { data = false });
 
-            var account = BankLedgerService.AccountService.SignIn(dto.UserName,
+            Account account = BankLedgerService.AccountService.SignIn(dto.UserName,
                                        dto.DecryptedPassword, Session);
             if (account != null)
             {
@@ -54,7 +54,7 @@ namespace bankLedger.Web.Controllers
         [HttpPost]
         public ActionResult CreateAccountSubmit(CreateUserDto dto)
         {
-            var newUser = BankLedgerService.AccountService.CreateAccount(dto.UserName,
+            Account newUser = BankLedgerService.AccountService.CreateAccount(dto.UserName,
                                                             dto.Password);
 
             if (newUser == null)

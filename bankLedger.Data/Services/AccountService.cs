@@ -68,7 +68,7 @@ namespace bankLedger.Data.Services
             if (((Account)session["CURRENTUSER"])?.UserName == userName)
                 return null;
 
-            var account = AccountMapper.Map((DbAccount)BankLedgerService.DataBase[dbKey]);
+            Account account = AccountMapper.Map((DbAccount)BankLedgerService.DataBase[dbKey]);
 
             if (HashUtility.VerifyHash(decryptedPassword,
                                                 account.EncryptedPassword,

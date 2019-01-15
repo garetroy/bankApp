@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace bankLedger.Models
@@ -14,9 +15,9 @@ namespace bankLedger.Models
 
         public Ledger(ulong ledgerId, int transactionType, decimal amount)
         {
-            var enumValues = Enum.GetValues(typeof(TransactionType)).Cast<int>();
-            var maxVal = enumValues.Max();
-            var minVal = enumValues.Min();
+            IEnumerable<int> enumValues = Enum.GetValues(typeof(TransactionType)).Cast<int>();
+            int maxVal = enumValues.Max();
+            int minVal = enumValues.Min();
 
             if (transactionType > maxVal || transactionType < minVal)
             {

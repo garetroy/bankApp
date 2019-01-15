@@ -21,13 +21,13 @@ namespace bankLedger.Data.Services
 
             var ledgerRootName = $"{account.UserName}_Ledger_";
 
-            var userDbLedgers = BankLedgerService.DataBase
+            IEnumerable<DbLedger> userDbLedgers = BankLedgerService.DataBase
                 .Where(x => x.Key.Contains(ledgerRootName)).Select(x => (DbLedger)x.Value);
 
             if (!userDbLedgers.Any())
                 return null;
 
-            var ledgers = userDbLedgers.Select(LedgerMapper.Map).ToList();
+            List<Ledger> ledgers = userDbLedgers.Select(LedgerMapper.Map).ToList();
 
             return ledgers;
         }
@@ -70,11 +70,11 @@ namespace bankLedger.Data.Services
 
             var ledgerRootName = $"{account.UserName}_Ledger_";
 
-            var userDbLedgers = BankLedgerService.DataBase.
+            IEnumerable<DbLedger> userDbLedgers = BankLedgerService.DataBase.
                 Where(x => x.Key.Contains(ledgerRootName)).Select(x => (DbLedger)x.Value);
 
             decimal sum = 0;
-            foreach (var ledger in userDbLedgers)
+            foreach (DbLedger ledger in userDbLedgers)
                 if (ledger.Transaction_Type == (int)TransactionType.Deposit)
                     sum += ledger.Amount;
                 else

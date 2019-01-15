@@ -16,7 +16,7 @@ namespace bankLedger.Data
             rng.GetNonZeroBytes(saltBytes);
 
             var plainTextBytes = Encoding.UTF8.GetBytes(plainText);
-            var hashWithSaltBytes = GetPbkdf2Bytes(plainText, saltBytes,
+            byte[] hashWithSaltBytes = GetPbkdf2Bytes(plainText, saltBytes,
                 c_iterations, c_hashSizeInBytes);
 
             return new Tuple<string, string>(Convert.ToBase64String(hashWithSaltBytes),
@@ -25,13 +25,13 @@ namespace bankLedger.Data
 
         public static bool VerifyHash(string plainText, string hashValue, string salt)
         {
-            var hashWithSaltBytes = Convert.FromBase64String(hashValue);
+            byte[] hashWithSaltBytes = Convert.FromBase64String(hashValue);
 
             if (hashWithSaltBytes.Length < c_hashSizeInBytes)
                 return false;
 
-            var saltBytes = Convert.FromBase64String(salt);
-            var expectedString = Convert.ToBase64String(GetPbkdf2Bytes(plainText,
+            byte[] saltBytes = Convert.FromBase64String(salt);
+            string expectedString = Convert.ToBase64String(GetPbkdf2Bytes(plainText,
                 saltBytes, c_iterations, c_hashSizeInBytes));
 
             return hashValue == expectedString;
