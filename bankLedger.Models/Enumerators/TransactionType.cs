@@ -1,5 +1,4 @@
-﻿using System;
-namespace bankLedger.Models
+﻿namespace bankLedger.Models
 {
     public enum TransactionType
     {

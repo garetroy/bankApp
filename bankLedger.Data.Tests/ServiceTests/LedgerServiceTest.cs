@@ -33,7 +33,6 @@ namespace bankLedger.Data.Test.ServiceTests
 
             var ledgerCountKey = $"{account.UserName.ToLower()}_ledgerCount";
 
-
             ledgerService.BankLedgerService.DataBase.Remove(ledgerKey);
             Assert.IsNotNull(ledgerService.CreateLedger(account, depLedger));
             Assert.IsNotNull(ledgerService.BankLedgerService.DataBase[ledgerCountKey]);
@@ -112,7 +111,7 @@ namespace bankLedger.Data.Test.ServiceTests
             ledgerService.CreateLedger(account, withLedger);
             Assert.AreEqual(-10, ledgerService.GetTotalBalance(account));
 
-            for(int i = 0; i < 11; i++)
+            for (int i = 0; i < 11; i++)
                 ledgerService.CreateLedger(account, depLedger);
 
             Assert.AreEqual(100, ledgerService.GetTotalBalance(account));

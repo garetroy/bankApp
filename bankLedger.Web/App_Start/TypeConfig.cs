@@ -1,5 +1,5 @@
-﻿using StructureMap;
-using bankLedger.Web.DependencyInjection;
+﻿using bankLedger.Web.DependencyInjection;
+using StructureMap;
 
 namespace bankLedger.Web.App_Start
 {

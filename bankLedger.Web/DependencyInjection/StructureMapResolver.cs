@@ -1,8 +1,8 @@
-﻿using System;
+﻿using StructureMap;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using StructureMap;
 
 namespace bankLedger.Web.App_Start
 {
@@ -26,6 +26,6 @@ namespace bankLedger.Web.App_Start
             return m_container.GetAllInstances(serviceType).Cast<object>();
         }
 
-        readonly IContainer m_container;
+        private readonly IContainer m_container;
     }
 }

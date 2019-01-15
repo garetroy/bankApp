@@ -4,6 +4,6 @@ namespace bankLedger.Web.Models
 {
     public class AccountLedgerViewModel
     {
-        public List<LedgerViewModel> Ledgers{ get; set;} 
+        public List<LedgerViewModel> Ledgers { get; set; }
     }
 }

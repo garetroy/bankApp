@@ -1,5 +1,4 @@
-﻿using System;
-namespace bankLedger.Data.DbObject
+﻿namespace bankLedger.Data.DbObject
 {
     internal sealed class DbLedger
     {

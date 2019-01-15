@@ -1,24 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Web;
-using System.Web.Mvc;
-using bankLedger.Models;
+﻿using bankLedger.Models;
 using bankLedger.Web.Controllers;
 using bankLedger.Web.Dtos;
 using bankLedger.Web.Models;
 using Moq;
 using MvcContrib.TestHelper;
 using NUnit.Framework;
-
+using System;
+using System.Collections.Generic;
+using System.Web;
+using System.Web.Mvc;
 
 //To supress warning from MvcContrib
 #pragma warning disable CS1701 // Assuming assembly reference matches identity
+
 namespace bankLedger.Web.Tests.ControllerTests
 {
     [TestFixture]
     public class AccountControllerTest
     {
-
         [SetUp]
         public void Init()
         {
@@ -60,7 +59,7 @@ namespace bankLedger.Web.Tests.ControllerTests
             var viewModels = new List<LedgerViewModel>();
             LedgerService.Setup(x => x.GetAllLedgers(It.IsAny<Account>()))
                 .Returns(results);
-            foreach( var ledger in results)
+            foreach (var ledger in results)
             {
                 viewModels.Add(new LedgerViewModel
                 {
@@ -98,7 +97,7 @@ namespace bankLedger.Web.Tests.ControllerTests
 
             //Bad Request, an account ledger wasnt created
             AccountService.Setup(x => x.IsSignedIn(It.IsAny<HttpSessionStateBase>()))
-                .Returns(new Account("","","",null));
+                .Returns(new Account("", "", "", null));
             LedgerService.Setup(x => x.CreateLedger(It.IsAny<Account>(),
                 It.IsAny<Ledger>())).Returns((Ledger)null);
             var result = Controller.CreateAccountLedger(dto);
@@ -130,7 +129,7 @@ namespace bankLedger.Web.Tests.ControllerTests
             LedgerService.Setup(x => x.GetTotalBalance(It.IsAny<Account>()))
                 .Returns(10);
             AccountService.Setup(x => x.IsSignedIn(It.IsAny<HttpSessionStateBase>()))
-                .Returns(new Account("name","","",null));
+                .Returns(new Account("name", "", "", null));
 
             var result = Controller.AccountInfo();
             result.AssertViewRendered().ForView("AccountInfo");
@@ -147,7 +146,7 @@ namespace bankLedger.Web.Tests.ControllerTests
             var result = func();
 
             //If Forbidden then check for that (for posts)
-            if(result.GetType() == typeof(HttpStatusCodeResult))
+            if (result.GetType() == typeof(HttpStatusCodeResult))
             {
                 var code = result.AssertResultIs<HttpStatusCodeResult>().StatusCode;
                 Assert.AreEqual(403, code);
@@ -166,4 +165,5 @@ namespace bankLedger.Web.Tests.ControllerTests
         private LedgerController Controller { get; set; }
     }
 }
+
 #pragma warning restore CS1701 // Assuming assembly reference matches identity

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace bankLedger.Data
 {
@@ -10,6 +9,6 @@ namespace bankLedger.Data
             DB = new Dictionary<string, object>();
         }
 
-        public Dictionary<string,object> DB { get; set; }
+        public Dictionary<string, object> DB { get; set; }
     }
 }

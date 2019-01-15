@@ -11,6 +11,7 @@ using System.Web.Mvc;
 
 //To supress warning from MvcContrib
 #pragma warning disable CS1701 // Assuming assembly reference matches identity
+
 namespace bankLedger.Web.Tests.ControllerTests
 {
     [TestFixture]
@@ -115,8 +116,8 @@ namespace bankLedger.Web.Tests.ControllerTests
         [Test]
         public void Logout()
         {
-           Controller.Logout().AssertActionRedirect().ToController("Login")
-                .ToAction("Login");
+            Controller.Logout().AssertActionRedirect().ToController("Login")
+                 .ToAction("Login");
         }
 
         private ActionResult TestBadSignin(Func<ActionResult> func)
@@ -145,4 +146,5 @@ namespace bankLedger.Web.Tests.ControllerTests
         private LoginController Controller { get; set; }
     }
 }
+
 #pragma warning restore CS1701 // Assuming assembly reference matches identity

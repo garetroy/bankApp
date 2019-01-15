@@ -18,7 +18,7 @@ namespace bankLedger.Models
             var maxVal = enumValues.Max();
             var minVal = enumValues.Min();
 
-            if(transactionType > maxVal || transactionType < minVal)
+            if (transactionType > maxVal || transactionType < minVal)
             {
                 var errorString = "Given parameter transactionType "
                 + $"= {transactionType} cannot be cast to Enum TransactionType";
