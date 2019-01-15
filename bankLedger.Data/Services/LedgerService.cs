@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using bankLedger.Data.DbObject;
+﻿using bankLedger.Data.DbObject;
 using bankLedger.Data.Mappers;
 using bankLedger.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace bankLedger.Data.Services
 {
@@ -41,7 +41,7 @@ namespace bankLedger.Data.Services
                 throw new ArgumentException("Account Null or Username invalid");
 
             var ledgerCountKey = $"{account.UserName.ToLower()}_ledgerCount";
-            ulong ledgerCount = BankLedgerService.DataBase.ContainsKey(ledgerCountKey) 
+            ulong ledgerCount = BankLedgerService.DataBase.ContainsKey(ledgerCountKey)
                                 ? (ulong)BankLedgerService.DataBase[ledgerCountKey] : 0;
             ledgerCount += 1;
 
@@ -71,7 +71,7 @@ namespace bankLedger.Data.Services
             var ledgerRootName = $"{account.UserName}_Ledger_";
 
             var userDbLedgers = BankLedgerService.DataBase.
-                Where(x => x.Key.Contains(ledgerRootName)).Select(x=>(DbLedger)x.Value);
+                Where(x => x.Key.Contains(ledgerRootName)).Select(x => (DbLedger)x.Value);
 
             decimal sum = 0;
             foreach (var ledger in userDbLedgers)
@@ -81,7 +81,6 @@ namespace bankLedger.Data.Services
                     sum -= ledger.Amount;
 
             return sum;
-
         }
 
         public IBankLedgerService BankLedgerService { get; }

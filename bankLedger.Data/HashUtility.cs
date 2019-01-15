@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Security.Cryptography;
 using System.Text;
-using bankLedger.Models;
 
 namespace bankLedger.Data
 {
@@ -24,7 +23,7 @@ namespace bankLedger.Data
                 Convert.ToBase64String(saltBytes));
         }
 
-        public static  bool VerifyHash(string plainText, string hashValue, string salt)
+        public static bool VerifyHash(string plainText, string hashValue, string salt)
         {
             var hashWithSaltBytes = Convert.FromBase64String(hashValue);
 
@@ -38,7 +37,7 @@ namespace bankLedger.Data
             return hashValue == expectedString;
         }
 
-        private static byte[] GetPbkdf2Bytes(string password, byte[] salt, 
+        private static byte[] GetPbkdf2Bytes(string password, byte[] salt,
             int iterations, int outputBytes)
         {
             var pbkdf2 = new Rfc2898DeriveBytes(password, salt)

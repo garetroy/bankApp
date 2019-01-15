@@ -1,12 +1,11 @@
-﻿using System;
+﻿using bankLedger.Models;
 using System.Collections.Generic;
-using bankLedger.Models;
 
 namespace bankLedger.Data.Services
 {
     public class BankLedgerService : IBankLedgerService
     {
-        public BankLedgerService(Dictionary<string,object> db)
+        public BankLedgerService(Dictionary<string, object> db)
         {
             AccountService = new AccountService(this);
             LedgerService = new LedgerService(this);

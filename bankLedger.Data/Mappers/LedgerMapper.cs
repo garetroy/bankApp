@@ -1,5 +1,4 @@
-﻿using System;
-using bankLedger.Data.DbObject;
+﻿using bankLedger.Data.DbObject;
 using bankLedger.Models;
 
 namespace bankLedger.Data.Mappers

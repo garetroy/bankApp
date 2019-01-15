@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Web;
-using System.Web.SessionState;
-using bankLedger.Data.DbObject;
+﻿using bankLedger.Data.DbObject;
 using bankLedger.Data.Mappers;
 using bankLedger.Models;
+using System;
+using System.Web;
+
 namespace bankLedger.Data.Services
 {
     public sealed class AccountService : IAccountService
@@ -71,7 +70,7 @@ namespace bankLedger.Data.Services
 
             var account = AccountMapper.Map((DbAccount)BankLedgerService.DataBase[dbKey]);
 
-            if(HashUtility.VerifyHash(decryptedPassword, 
+            if (HashUtility.VerifyHash(decryptedPassword,
                                                 account.EncryptedPassword,
                                                 account.Salt))
             {

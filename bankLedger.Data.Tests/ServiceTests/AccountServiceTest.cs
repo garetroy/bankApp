@@ -25,7 +25,7 @@ namespace bankLedger.Data.Test.ServiceTests
             var success = accountService.CreateAccount("Success", "test");
             Assert.AreSame("Success", success?.UserName);
 
-            //Test that you cannot have the same useraccount with the 
+            //Test that you cannot have the same useraccount with the
             // same name but different capitalization
             var failure2 = accountService.CreateAccount("succEss", "test");
             Assert.IsNull(failure2);
@@ -99,7 +99,8 @@ namespace bankLedger.Data.Test.ServiceTests
 
         private class FakeSessionState : HttpSessionStateBase
         {
-            Dictionary<string, object> items = new Dictionary<string, object>();
+            private Dictionary<string, object> items = new Dictionary<string, object>();
+
             public override object this[string name]
             {
                 get { return items.ContainsKey(name) ? items[name] : null; }

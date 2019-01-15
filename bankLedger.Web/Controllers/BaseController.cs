@@ -1,5 +1,5 @@
-﻿using System.Web.Mvc;
-using bankLedger.Models;
+﻿using bankLedger.Models;
+using System.Web.Mvc;
 
 namespace bankLedger.Web.Controllers
 {
@@ -15,7 +15,7 @@ namespace bankLedger.Web.Controllers
             return View(view, model);
         }
 
-            protected ActionResult BadRequest(string message)
+        protected ActionResult BadRequest(string message)
         {
             return new HttpStatusCodeResult(400);
         }
@@ -33,7 +33,6 @@ namespace bankLedger.Web.Controllers
         {
             return new HttpStatusCodeResult(200);
         }
-
 
         protected IBankLedgerService BankLedgerService { get; }
     }

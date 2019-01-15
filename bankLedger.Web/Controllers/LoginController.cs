@@ -1,13 +1,15 @@
-﻿using System.Web.Mvc;
-using bankLedger.Models;
+﻿using bankLedger.Models;
 using bankLedger.Web.Dtos;
 using bankLedger.Web.Models;
+using System.Web.Mvc;
 
 namespace bankLedger.Web.Controllers
 {
     public class LoginController : BaseController
     {
-        public LoginController(IBankLedgerService service) : base(service) { }
+        public LoginController(IBankLedgerService service) : base(service)
+        {
+        }
 
         [HttpGet]
         public ActionResult Login()
@@ -23,9 +25,8 @@ namespace bankLedger.Web.Controllers
         [HttpPost]
         public ActionResult AttemptLogin(LoginDto dto)
         {
-            if(BankLedgerService.AccountService.IsSignedIn(Session) != null)
+            if (BankLedgerService.AccountService.IsSignedIn(Session) != null)
                 return Json(new { data = false });
-
 
             var account = BankLedgerService.AccountService.SignIn(dto.UserName,
                                        dto.DecryptedPassword, Session);
@@ -56,7 +57,7 @@ namespace bankLedger.Web.Controllers
             var newUser = BankLedgerService.AccountService.CreateAccount(dto.UserName,
                                                             dto.Password);
 
-            if(newUser == null)
+            if (newUser == null)
             {
                 //Don't redirect, creation was a failure
                 return BadRequest("Could not create account.");
@@ -64,14 +65,13 @@ namespace bankLedger.Web.Controllers
 
             //Redirect to login
             return Ok();
-
         }
 
         [HttpGet]
         public ActionResult Logout()
         {
             BankLedgerService.AccountService.SignOut(Session);
-                return RedirectToAction("Login", "Login");
+            return RedirectToAction("Login", "Login");
         }
     }
 }
