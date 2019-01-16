@@ -1,6 +1,19 @@
 ﻿.forest-green {
     background-color: #1B701B;
     border-color: #1B701B;
+    color: white;
+}
+
+.btn.forest-green:hover, .btn.forest-green:active, .btn.forest-green:focus, .btn.forest-green:active:focus {
+    background-color: #333333 !important; /* Important because of btn-primary overrides*/
+    border-color: #333333 !important; /* Important because of btn-primary overrides*/
+    box-shadow: 0 0 0 0.2rem #1B701B !important; /* Important because of btn-primary overrides*/
+    outline: none !important; /* Important because of btn-primary overrides*/
+    color: white;
+}
+
+input:focus, input:active {
+    box-shadow: 0 0 0 0.2rem rgba(27, 112, 27, 0.8) !important; /* Important because of form-control overrides*/
 }
 
 .no-outline:focus {
@@ -14,4 +27,5 @@
 
 .error {
     color: red;
+    font-style: italic;
 }

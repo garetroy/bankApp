@@ -14,10 +14,10 @@
         <ul class="navbar">
             @{var url = Request.Url.ToString();}
             @{var isLogin = (url.Contains("Login") || Request.Url.PathAndQuery == "/"); }
-            <li class="navbaritem @(isLogin ? "d-none" : "")"><a class="@(url.Contains("AccountInfo") ? "active" : "")" href="/Account/AccountInfo">Account Info</a></li>
+            <li class="navbaritem @(isLogin ? "d-none" : "")"><a class="@(url.Contains("AccountInfo") ? "active" : "")" href="/Ledger/AccountInfo">Account Info</a></li>
             <li class="navbaritem"><span class="navbarspan">Bank Ledger Inc.</span></li>
             <li class="navbaritem @(!isLogin ? "d-none" : "")"><a class="@(isLogin ? "active" : "")" href="/Login">Login</a></li>
-            <li class="navbaritem @(isLogin ? "d-none" : "")"><a class="@(url.Contains("AccountLedger") ? "active" : "")" href="/Account/AccountLedger">Account Ledgers</a></li>
+            <li class="navbaritem @(isLogin ? "d-none" : "")"><a class="@(url.Contains("AccountLedger") ? "active" : "")" href="/Ledger/AccountLedger">Account Ledgers</a></li>
         </ul>
     </div>
     @RenderBody()

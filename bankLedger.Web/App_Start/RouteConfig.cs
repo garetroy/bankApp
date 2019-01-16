@@ -61,22 +61,22 @@ namespace bankLedger.Web
         {
             routes.MapRoute(
                 name: "AccountInfo",
-                url: "Account/AccountInfo",
-                defaults: new { controller = "Account", action = "AccountInfo" },
+                url: "Ledger/AccountInfo",
+                defaults: new { controller = "Ledger", action = "AccountInfo" },
                 constraints: new { httpMethod = new HttpMethodConstraint("GET") }
                 );
 
             routes.MapRoute(
                 name: "AccountLedger",
-                url: "Account/AccountLedger",
-                defaults: new { controller = "Account", action = "AccountLedger" },
+                url: "Ledger/AccountLedger",
+                defaults: new { controller = "Ledger", action = "AccountLedger" },
                 constraints: new { httpMethod = new HttpMethodConstraint("GET") }
                 );
 
             routes.MapRoute(
                 name: "CreateAccountLedger",
-                url: "Account/CreateAccountLedger",
-                defaults: new { controller = "Account", action = "CreateAccountLedger" },
+                url: "Ledger/CreateAccountLedger",
+                defaults: new { controller = "Ledger", action = "CreateAccountLedger" },
                 constraints: new { httpMethod = new HttpMethodConstraint("POST") }
                 );
         }

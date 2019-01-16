@@ -1,0 +1,58 @@
+﻿@using bankLedger.Web.Models
+@using bankLedger.Models
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<div>
+    <div class="d-flex justify-content-center">
+        <input id="newLedger" class="btn btn-primary forest-green no-outline no-border-radius" data-target="#addLedgerModal" data-toggle="modal" type="button" value="New Ledger" />
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Transaction Type</th>
+                <th scope="col">Amount</th>
+            </tr>
+        </thead>
+        <tbody id="ledgerBody">
+            @foreach (LedgerViewModel ledger in Model.Ledgers)
+            {
+            <tr>
+                <th scope="row">@ledger.LedgerId</th>
+                <td>@ledger.TransactionType.ToString()</td>
+                <td>@(((ledger.TransactionType == TransactionType.Deposit ? 1 : -1) * ledger.Amount).ToString("C"))</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+    <div id="addLedgerModal" class="modal fade" role="dialog" tabindex="-1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Ledger</h4>
+                </div>
+                <div class="modal-body form-columns-center">
+                    <div class="form-group">
+                        <label for="amount">Amount:</label>
+                        <input id="amount" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="transactionType">Transaction:</label>
+                        <select id="transactionType" class="form-control">
+                            <option value="1">Withdraw</option>
+                            <option value="2">Deposit</option>
+                        </select>
+                    </div>
+                    <span id="badAmount" class="login-span error d-none">Must fill out a valid amount.</span>
+                    <span id="badRequest" class="login-span error d-none">Could not create ledger.</span>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button id="addLedger" class="btn btn-primary forest-green no-outline">Add Ledger</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

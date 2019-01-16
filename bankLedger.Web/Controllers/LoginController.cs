@@ -15,7 +15,7 @@ namespace bankLedger.Web.Controllers
         public ActionResult Login()
         {
             if (BankLedgerService.AccountService.IsSignedIn(Session) != null)
-                return RedirectToAction("AccountInfo", "Account");
+                return RedirectToAction("AccountInfo", "Ledger");
 
             var model = new LoginViewModel();
 
@@ -44,7 +44,7 @@ namespace bankLedger.Web.Controllers
         public ActionResult CreateAccount()
         {
             if (BankLedgerService.AccountService.IsSignedIn(Session) != null)
-                return RedirectToAction("AccountInfo", "Account");
+                return RedirectToAction("AccountInfo", "Ledger");
 
             var model = new AttemptCreateUserViewModel();
 
