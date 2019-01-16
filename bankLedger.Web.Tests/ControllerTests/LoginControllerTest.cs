@@ -40,7 +40,7 @@ namespace bankLedger.Web.Tests.ControllerTests
             account = new Account("a", "a", "a", null);
             AccountService.Setup(x => x.IsSignedIn(Session)).Returns(account);
             var signedInResult = Controller.Login();
-            signedInResult.AssertActionRedirect().ToController("Account")
+            signedInResult.AssertActionRedirect().ToController("Ledger")
                 .ToAction("AccountInfo");
         }
 
@@ -80,7 +80,7 @@ namespace bankLedger.Web.Tests.ControllerTests
             Account account = new Account("a", "a", "a", null);
             AccountService.Setup(x => x.IsSignedIn(Session)).Returns(account);
             var result = Controller.CreateAccount();
-            result.AssertActionRedirect().ToController("Account").ToAction("AccountInfo");
+            result.AssertActionRedirect().ToController("Ledger").ToAction("AccountInfo");
 
             //Returnes proper view and model
             AccountService.Setup(x => x.IsSignedIn(Session)).Returns((Account)null);
