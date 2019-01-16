@@ -40,3 +40,7 @@
 .active {
     background-color: #1B701B;
 }
+
+.inactive {
+    background-color: #1b701b4f;
+}

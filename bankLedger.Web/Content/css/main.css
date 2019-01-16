@@ -16,9 +16,9 @@
     box-shadow: 0 0 0 0.2rem rgba(27, 112, 27, 0.8);
 }
 
-.no-outline:focus {
+.no-outline:focus, .no-outline:active, .no-outline:hover {
     outline: 0 !important;
-    box-shadow: none;
+    box-shadow: none !important;
 }
 
 .no-border-radius {
