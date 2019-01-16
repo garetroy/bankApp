@@ -5,3 +5,17 @@
 .amount-bottom-margin {
     margin-bottom: 10px;
 }
+
+.ledger-row {
+    line-height: 40px;
+    box-shadow: none;
+    transition: box-shadow .3s;
+}
+
+    .ledger-row:hover {
+        box-shadow: -2px 1px 7px 0px #333333;
+    }
+
+    .ledger-row {
+        box-sizing: unset;
+    }

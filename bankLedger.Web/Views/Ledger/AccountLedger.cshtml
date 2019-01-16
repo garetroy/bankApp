@@ -18,7 +18,7 @@
         <tbody id="ledgerBody">
             @foreach (LedgerViewModel ledger in Model.Ledgers)
             {
-            <tr>
+            <tr class="ledger-row">
                 <th scope="row">@ledger.LedgerId</th>
                 <td>@ledger.TransactionType.ToString()</td>
                 <td>@(((ledger.TransactionType == TransactionType.Deposit ? 1 : -1) * ledger.Amount).ToString("C"))</td>
