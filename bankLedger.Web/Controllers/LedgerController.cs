@@ -69,14 +69,29 @@ namespace bankLedger.Web.Controllers
             if (account == null)
                 return RedirectToAction("Login", "Login");
 
-            int count = BankLedgerService.LedgerService.GetAllLedgers(account)?.Count ?? 0;
+            ICollection<Ledger> ledgers = BankLedgerService.LedgerService.GetAllLedgers(account);
+            decimal count = ledgers?.Count ?? 0;
+            decimal withdrawlCount = ledgers != null ? ledgers.Where(x => x.TransactionType == TransactionType.Withdrawl).Count() : 0;
+            decimal depositCount = count - withdrawlCount;
             decimal totalAmount = BankLedgerService.LedgerService.GetTotalBalance(account);
+
+            decimal withdrawlRatio = 100;
+            decimal depositRatio = 100;
+            if (count != 0)
+            {
+                withdrawlRatio = (withdrawlCount / count) * 100;
+                depositRatio = (depositCount / count) * 100;
+            }
 
             var model = new AccountInfoViewModel
             {
                 LegderCount = (ulong)count,
                 TotalAmount = totalAmount,
-                AccountName = account.UserName
+                AccountName = account.UserName,
+                WithdrawlCount = withdrawlCount,
+                WithdrawlRatio = withdrawlRatio,
+                DepositCount = depositCount,
+                DepositRatio = depositRatio
             };
 
             return BaseView("AccountInfo", model);

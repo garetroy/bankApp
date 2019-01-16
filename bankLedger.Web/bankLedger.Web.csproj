@@ -121,6 +121,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\accountinfo.css" />
+    <Content Include="Content\css\circle.css" />
     <Content Include="Content\css\ledgerinfo.css" />
     <Content Include="Content\css\login.css" />
     <Content Include="Views\Web.config" />

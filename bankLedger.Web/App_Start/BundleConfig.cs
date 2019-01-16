@@ -7,7 +7,8 @@ namespace bankLedger.Web.App_Start
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new StyleBundle("~/bundles/bootstrap").Include(
-                "~/Content/css/bootstrap.min.css"
+                "~/Content/css/bootstrap.min.css",
+                "~/Content/css/circle.css"
             ));
 
             bundles.Add(new StyleBundle("~/bundles/styles").Include(

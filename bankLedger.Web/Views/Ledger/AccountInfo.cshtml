@@ -6,22 +6,40 @@
 <div class="info-screen">
     <div class="row">
         <div class="card card-user col-4 offset-1">
-            <span class="card-username">Username</span>
+            <span class="header">Username</span>
             <span>@Model.AccountName</span>
             <a href="/Login/Logout">
                 <input class="btn btn-primary forest-green no-outline" type="button" value="Logout" />
             </a>
         </div>
-        <div class="card col-4 card-margin-left">
-            <span>Amount Of Ledgers: @Model.LegderCount.ToString()</span>
+        <div class="card col-4 card-margin-left card-count">
+            <span class="header">Amount Of Ledgers</span>
+            <div class="count-circle inner-content text-center">
+                <div class="c100 p100 center">
+                    <span>@Model.LegderCount.ToString()</span>
+                    <div class="slice">
+                        <div class="bar"></div>
+                        <div class="fill"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="row">
         <div class="card card-margin-top col-4 offset-1">
-            <span>Total Bank Amount: @Model.TotalAmount.ToString("C")</span>
+            <span class="header">Total Bank Amount</span>
+            <span class="bank-amount">@Model.TotalAmount.ToString("C")</span>
         </div>
-        <div class="card card-margin-top card-margin-left col-4">
-            <span>Transaction Type Counts: @Model.TotalAmount.ToString("C")</span>
+        <div class="card card-margin-top card-transaction card-margin-left col-4">
+            <span class="header">Transaction Type Information</span>
+            <div class="progress">
+                <div class="progress-bar progress-darkforest" role="progressbar" style="width: @Model.WithdrawlRatio%" aria-valuenow="@Model.WithdrawlRatio" aria-valuemin="0" aria-valuemax="100">
+                    Withrdawls: @Model.WithdrawlCount.ToString()
+                </div>
+                <div class="progress-bar progress-forestgreen" role="progressbar" style="width:  @Model.DepositRatio%" aria-valuenow="@Model.DepositRatio" aria-valuemin="0" aria-valuemax="100">
+                    Deposits: @Model.DepositCount.ToString()
+                </div>
+            </div>
         </div>
     </div>
 </div>

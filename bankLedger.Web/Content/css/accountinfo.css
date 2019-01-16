@@ -10,7 +10,15 @@
     width: 800px;
     box-shadow: none;
     transition: box-shadow .5s;
+    padding-top:10px;
+    text-align: center;
 }
+
+    .card > .header {
+        font-weight: bold;
+        text-decoration: underline;
+        margin-bottom: 10px;
+    }
 
 .card-margin-top {
     margin-top: 10px;
@@ -24,16 +32,48 @@
     box-shadow: 2px 2px 5px 1px #333333;
 }
 
-.card-user {
-    text-align: center;
-    padding-top: 13%;
-}
-
-.card-user > span:not(.card-username){
+.card-user > span:not(.header){
     margin-bottom: 20px;
 }
 
-.card-username {
-    text-decoration: underline;
-    font-weight: bold;
+.card-user > a {
+    margin-top: 60px;
+}
+
+.card-transaction > .progress {
+    margin-top: 57px;
+    height: 100px;
+}
+
+.card-count {
+
+}
+
+.count-circle {
+    margin-top: 50px;
+}
+
+    .count-circle > * > span {
+        color: #1B701B;
+    }
+
+    .count-circle > *:hover > span {
+        color: #1B701B;
+    }
+
+    .count-circle > * > .slice > * {
+        border-color: #1B701B !important;
+    }
+
+.progress-darkforest {
+    background-color: #1B701B;
+}
+
+.progress-forestgreen {
+    background-color: #2b462d;
+}
+
+.bank-amount {
+    margin-top: 60px;
+    font-size: 50px;
 }
