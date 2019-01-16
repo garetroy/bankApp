@@ -1,14 +1,13 @@
 ﻿.info-screen {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
+    top: 54%;
+    left: 54%;
     transform: translate(-50%, -50%);
 }
 
 .card {
     height: 300px;
-    width: 500px;
+    width: 800px;
     box-shadow: none;
     transition: box-shadow .5s;
 }
@@ -23,4 +22,18 @@
 
 .card:hover {
     box-shadow: 2px 2px 5px 1px #333333;
+}
+
+.card-user {
+    text-align: center;
+    padding-top: 13%;
+}
+
+.card-user > span:not(.card-username){
+    margin-bottom: 20px;
+}
+
+.card-username {
+    text-decoration: underline;
+    font-weight: bold;
 }
