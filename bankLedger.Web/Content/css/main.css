@@ -1,4 +1,12 @@
-﻿.forest-green {
+﻿body {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none; 
+}
+
+.forest-green {
     background-color: #1B701B;
     border-color: #1B701B;
     color: white;
