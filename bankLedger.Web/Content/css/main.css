@@ -13,7 +13,12 @@
 }
 
 .forest-green-input:focus, .forest-green-input:active {
-    box-shadow: 0 0 0 0.2rem rgba(27, 112, 27, 0.8);
+    box-shadow: 0 0 0 1.1px rgba(27, 112, 27, 0.8);
+    border-color: rgba(27, 112, 27, 0.8);
+}
+
+.forest-green-select:focus {
+    border-color: #1B701B;
 }
 
 .no-outline:focus, .no-outline:active, .no-outline:hover {

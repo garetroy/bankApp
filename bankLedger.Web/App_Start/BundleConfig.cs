@@ -14,6 +14,7 @@ namespace bankLedger.Web.App_Start
                 "~/Content/css/navbar.css",
                 "~/Content/css/login.css",
                 "~/Content/css/accountinfo.css",
+                "~/Content/css/ledgerinfo.css",
                 "~/Content/css/main.css"
             ));
 

@@ -34,13 +34,17 @@
                     <h4 class="modal-title">Add Ledger</h4>
                 </div>
                 <div class="modal-body form-columns-center">
-                    <div class="form-group">
-                        <label for="amount">Amount:</label>
+                    <div class="amount-bottom-margin input-group">
+                        <div class="input-group-prepend">
+                            <span class="amount-padding input-group-text" for="amount">Amount:</span>
+                        </div>
                         <input id="amount" class="forest-green-input form-control" />
                     </div>
-                    <div class="form-group">
-                        <label for="transactionType">Transaction:</label>
-                        <select id="transactionType" class="forest-green-input form-control">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="transactionType">Transaction:</label>
+                        </div>
+                        <select id="transactionType" class="custom-select forest-green-select form-control no-outline">
                             <option value="1">Withdraw</option>
                             <option value="2">Deposit</option>
                         </select>
