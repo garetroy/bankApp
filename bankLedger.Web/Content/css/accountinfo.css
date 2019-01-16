@@ -1,0 +1,26 @@
+﻿.info-screen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+.card {
+    height: 300px;
+    width: 500px;
+    box-shadow: none;
+    transition: box-shadow .5s;
+}
+
+.card-margin-top {
+    margin-top: 10px;
+}
+
+.card-margin-left {
+    margin-left: 10px;
+}
+
+.card:hover {
+    box-shadow: 2px 2px 5px 1px #333333;
+}

@@ -13,6 +13,7 @@ namespace bankLedger.Web.App_Start
             bundles.Add(new StyleBundle("~/bundles/styles").Include(
                 "~/Content/css/navbar.css",
                 "~/Content/css/login.css",
+                "~/Content/css/accountinfo.css",
                 "~/Content/css/main.css"
             ));
 

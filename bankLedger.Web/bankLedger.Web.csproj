@@ -120,6 +120,7 @@
     <Compile Include="DependencyInjection\BankLedgerRegistry.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\accountinfo.css" />
     <Content Include="Content\css\login.css" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />

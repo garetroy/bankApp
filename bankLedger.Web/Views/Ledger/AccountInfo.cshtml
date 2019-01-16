@@ -3,14 +3,24 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="justify-content-center">
-    <span>User Name: @Model.AccountName</span>
-    <br />
-    <span>Amount Of Ledgers: @Model.LegderCount.ToString()</span>
-    <br />
-    <span>Total Bank Amount: @Model.TotalAmount.ToString("C")</span>
-    <br />
-    <a href="/Login/Logout">
-        <input class="btn btn-primary forest-green no-outline" type="button" value="Logout" />
-    </a>
+<div class="info-screen">
+    <div class="row">
+        <div class="card col-4 offset-1">
+            <span>User Name: @Model.AccountName</span>
+            <a href="/Login/Logout">
+                <input class="btn btn-primary forest-green no-outline" type="button" value="Logout" />
+            </a>
+        </div>
+        <div class="card col-4 card-margin-left">
+            <span>Amount Of Ledgers: @Model.LegderCount.ToString()</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card card-margin-top col-4 offset-1">
+            <span>Total Bank Amount: @Model.TotalAmount.ToString("C")</span>
+        </div>
+        <div class="card card-margin-top card-margin-left col-4">
+            <span>Transaction Type Counts: @Model.TotalAmount.ToString("C")</span>
+        </div>
+    </div>
 </div>
