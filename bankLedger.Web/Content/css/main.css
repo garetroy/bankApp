@@ -5,15 +5,15 @@
 }
 
 .btn.forest-green:hover, .btn.forest-green:active, .btn.forest-green:focus, .btn.forest-green:active:focus {
-    background-color: #333333 !important; /* Important because of btn-primary overrides*/
-    border-color: #333333 !important; /* Important because of btn-primary overrides*/
-    box-shadow: 0 0 0 0.2rem #1B701B !important; /* Important because of btn-primary overrides*/
-    outline: none !important; /* Important because of btn-primary overrides*/
+    background-color: #333333;
+    border-color: #333333;
+    box-shadow: 0 0 0 0.2rem #1B701B;
+    outline: none;
     color: white;
 }
 
-input:focus, input:active {
-    box-shadow: 0 0 0 0.2rem rgba(27, 112, 27, 0.8) !important; /* Important because of form-control overrides*/
+.forest-green-input:focus, .forest-green-input:active {
+    box-shadow: 0 0 0 0.2rem rgba(27, 112, 27, 0.8);
 }
 
 .no-outline:focus {

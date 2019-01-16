@@ -16,7 +16,7 @@
             data: postData,
             success: function (data) {
                 if(data.data)
-                    location.href = "/Account/AccountLedger/";
+                    location.href = "/Ledger/AccountLedger/";
                 else 
                     $("#badLogin").removeClass("d-none");
             },
@@ -31,4 +31,10 @@ $(document).ready(function() {
     const $loginBtn = $("#Login");
     if($loginBtn.length > 0)
         $loginBtn.on("click", SubmitLogin);
+    $(".login-input").on("keyup", function (event) {
+        event.preventDefault();
+        if (event.keyCode === 13) {
+            SubmitLogin();
+        }
+    });
 });

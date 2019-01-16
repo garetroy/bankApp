@@ -60,7 +60,7 @@ namespace bankLedger.Data.Services
             BankLedgerService.DataBase[ledgerKey] = dbLedger;
             BankLedgerService.DataBase[ledgerCountKey] = ledgerCount;
 
-            return ledger;
+            return newLedger;
         }
 
         public decimal GetTotalBalance(Account account)

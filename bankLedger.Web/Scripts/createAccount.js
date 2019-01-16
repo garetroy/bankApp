@@ -49,8 +49,12 @@
 
 $(document).ready(function() {
     const $createBtn = $("#createUser");
-    if($createBtn.length > 0){
-
+    if($createBtn.length > 0)
         $createBtn.on("click", SubmitCreateAccount);
-     }
+    $(".login-input").on("keyup", function (event) {
+        event.preventDefault();
+        if (event.keyCode === 13) {
+            SubmitCreateAccount();
+        }
+    });
 });
