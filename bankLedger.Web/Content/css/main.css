@@ -15,7 +15,7 @@
 .btn.forest-green:hover, .btn.forest-green:active, .btn.forest-green:focus, .btn.forest-green:active:focus {
     background-color: #333333;
     border-color: #333333;
-    box-shadow: 0 0 0 0.2rem #1B701B;
+    box-shadow: 0 0 0 0.2rem #1B701B !important;
     outline: none;
     color: white;
 }
